@@ -1,3 +1,4 @@
+import hxd.Key;
 import hxd.Window;
 
 class Main extends hxd.App {
@@ -18,6 +19,14 @@ class Main extends hxd.App {
 
     override function update(dt: Float) {
         super.update(dt);
+
+        // check if any input is pressed, this might need to be a helper function of some sort
+        for (i in 0...1024) {
+            if (Key.isPressed(i)) {
+                ball.shoot();
+            }
+        }
+
         ball.update(dt);
         player.update(dt);
         opponent.update(dt);
