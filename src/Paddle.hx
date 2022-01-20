@@ -8,4 +8,8 @@ class Paddle extends Bitmap {
         tile.dx = -tile.width / 2;
         tile.dy = -tile.height / 2;
     }
+
+    public function update(dt: Float) {
+        
+    }
 }

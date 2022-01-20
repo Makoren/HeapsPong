@@ -16,6 +16,13 @@ class Main extends hxd.App {
         opponent.setPosition(Window.getInstance().width - 100, Window.getInstance().height / 2);
     }
 
+    override function update(dt: Float) {
+        super.update(dt);
+        ball.update(dt);
+        player.update(dt);
+        opponent.update(dt);
+    }
+
     static function main() {
         new Main();
     }
