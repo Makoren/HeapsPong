@@ -14,13 +14,14 @@ class Score extends h2d.Text {
             remove();
         }
 
-        super(hxd.res.DefaultFont.get(), parent);
+        super(hxd.Res.pongFont.toFont(), parent);
         textAlign = Center;
+        scale(6);
         updateText();
     }
 
     function updateText() {
-        text = '$playerScore | $opponentScore';
+        text = '$playerScore   |   $opponentScore';
     }
 
     public function incrementPlayerScore() {

@@ -9,13 +9,15 @@ class Main extends hxd.App {
     var score: Score;
 
     override function init() {
+        hxd.Res.initEmbed();
+
         ball = new Ball(s2d);
 
         player = new Paddle(s2d, true);
-        player.setPosition(200, Window.getInstance().height / 2);
+        player.setPosition(100, Window.getInstance().height / 2);
 
         opponent = new Paddle(s2d);
-        opponent.setPosition(Window.getInstance().width - 200, Window.getInstance().height / 2);
+        opponent.setPosition(Window.getInstance().width - 100, Window.getInstance().height / 2);
 
         score = new Score(s2d);
         score.setPosition(Window.getInstance().width / 2, 40);
