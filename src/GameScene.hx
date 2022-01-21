@@ -59,8 +59,7 @@ class GameScene extends Scene {
 
         // testing
         if (Key.isPressed(Key.ESCAPE)) {
-            app.currentScene = new MenuScene(app);
-            app.setScene(app.currentScene.scene);
+            setScene(new MenuScene(app));
         }
     }
 }

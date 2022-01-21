@@ -5,7 +5,7 @@ class Main extends hxd.App {
         hxd.Res.initEmbed();
 
         currentScene = new GameScene(this);
-        setScene(currentScene.scene);
+        currentScene.setScene(currentScene);
     }
 
     override function update(dt: Float) {

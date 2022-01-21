@@ -12,6 +12,11 @@ class Ball extends Bitmap {
 
     public static var inst: Ball = null;
 
+    override function onRemove() {
+        super.onRemove();
+        inst = null;
+    }
+
     public function new(?parent: Object) {
         if (inst == null) {
             inst = this;
@@ -45,7 +50,6 @@ class Ball extends Bitmap {
 
     public function shoot() {
         hasShot ? return : hasShot = true;
-        trace("shuut?");
         velocity.x = Random.float(-1, 1);
         velocity.y = Random.float(-1, 1);
         velocity = velocity.normalized().multiply(speed);
