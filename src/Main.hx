@@ -6,16 +6,19 @@ class Main extends hxd.App {
     var ball:Ball;
     var player: Paddle;
     var opponent: Paddle;
+    var score: Score;
 
     override function init() {
         ball = new Ball(s2d);
-        ball.setPosition(Window.getInstance().width / 2, Window.getInstance().height / 2);
 
         player = new Paddle(s2d, true);
         player.setPosition(200, Window.getInstance().height / 2);
 
         opponent = new Paddle(s2d);
         opponent.setPosition(Window.getInstance().width - 200, Window.getInstance().height / 2);
+
+        score = new Score(s2d);
+        score.setPosition(Window.getInstance().width / 2, 40);
     }
 
     override function update(dt: Float) {

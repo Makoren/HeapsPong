@@ -1,4 +1,3 @@
-import h3d.Vector;
 import hxd.Window;
 import h2d.Tile;
 import h2d.Object;
@@ -6,7 +5,7 @@ import h2d.Bitmap;
 
 class Paddle extends Bitmap {
     var isPlayer: Bool = false;
-    var speed: Float = 2;
+    var speed: Float = 1;
 
     public function new(?parent: Object, isPlayer: Bool = false) {
         super(Tile.fromColor(0xFFFFFF, 16, 128), parent);
