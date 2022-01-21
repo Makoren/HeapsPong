@@ -8,10 +8,18 @@ class Ball extends Bitmap {
     var speed: Float = 3;
     var hasShot = false;
 
+    public static var inst: Ball = null;
+
     public function new(?parent: Object) {
         super(Tile.fromColor(0xFFFFFF, 16, 16), parent);
         tile.dx = -tile.width / 2;
         tile.dy = -tile.height / 2;
+
+        if (inst == null) {
+            inst = this;
+        } else {
+            remove();
+        }
     }
 
     public function update(dt: Float) {
