@@ -1,3 +1,4 @@
+import h3d.Vector;
 import hxd.Key;
 import hxd.Window;
 
@@ -27,10 +28,24 @@ class Main extends hxd.App {
             }
         }
 
-        if (ball.getBounds().intersects(player.getBounds()) || ball.getBounds().intersects(opponent.getBounds())) {
-            ball.velocity.x *= -1;
+        // collision between paddles and balls (this is where it will be handy to have an array of entities to loop over)
+        if (ball.getBounds().intersects(player.getBounds())) {
+            // this calculation should be done on the ball
+            // sub means subtract here btw
+            var ballPos = new Vector(ball.x, ball.y);
+            var paddlePos = new Vector(player.x, player.y);
+            var dir = ballPos.sub(paddlePos).normalized();
+            ball.velocity = dir.multiply(ball.speed);
         }
 
+        if (ball.getBounds().intersects(opponent.getBounds())) {
+            var ballPos = new Vector(ball.x, ball.y);
+            var paddlePos = new Vector(opponent.x, opponent.y);
+            var dir = ballPos.sub(paddlePos).normalized();
+            ball.velocity = dir.multiply(ball.speed);
+        }
+
+        // bounce off top and bottom
         if (ball.getBounds().y < 0 || ball.getBounds().y + ball.getBounds().height > Window.getInstance().height) {
             ball.velocity.y *= -1;
         }
