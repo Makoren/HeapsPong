@@ -45,6 +45,7 @@ class Ball extends Bitmap {
 
     public function shoot() {
         hasShot ? return : hasShot = true;
+        trace("shuut?");
         velocity.x = Random.float(-1, 1);
         velocity.y = Random.float(-1, 1);
         velocity = velocity.normalized().multiply(speed);

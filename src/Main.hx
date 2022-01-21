@@ -1,5 +1,5 @@
 class Main extends hxd.App {
-    var currentScene: Scene;
+    public var currentScene: Scene;
 
     override function init() {
         hxd.Res.initEmbed();

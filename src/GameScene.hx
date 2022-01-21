@@ -8,7 +8,8 @@ class GameScene extends Scene {
     var opponent: Paddle;
     var score: Score;
 
-    public override function new(app: hxd.App) {
+    public override function new(app: Main) {
+        trace("New game scene");
         super(app);
         ball = new Ball(scene);
 
@@ -58,8 +59,8 @@ class GameScene extends Scene {
 
         // testing
         if (Key.isPressed(Key.ESCAPE)) {
-            var newScene = new MenuScene(app);
-            app.setScene(newScene.scene);
+            app.currentScene = new MenuScene(app);
+            app.setScene(app.currentScene.scene);
         }
     }
 }
