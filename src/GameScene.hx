@@ -2,27 +2,27 @@ import hxd.Window;
 import h3d.Vector;
 import hxd.Key;
 
-class GameScene extends h2d.Scene implements Updatable {
+class GameScene extends Scene {
     var ball:Ball;
     var player: Paddle;
     var opponent: Paddle;
     var score: Score;
 
-    public function new() {
-        super();
-        ball = new Ball(this);
+    public override function new(app: hxd.App) {
+        super(app);
+        ball = new Ball(scene);
 
-        player = new Paddle(this, true);
+        player = new Paddle(scene, true);
         player.setPosition(100, Window.getInstance().height / 2);
 
-        opponent = new Paddle(this);
+        opponent = new Paddle(scene);
         opponent.setPosition(Window.getInstance().width - 100, Window.getInstance().height / 2);
 
-        score = new Score(this);
+        score = new Score(scene);
         score.setPosition(Window.getInstance().width / 2, 40);
     }
 
-    public function update(dt: Float) {
+    public override function update(dt: Float) {
         // check if any input is pressed, this might need to be a helper function of some sort
         for (i in 0...1024) {
             if (Key.isPressed(i)) {
@@ -55,5 +55,11 @@ class GameScene extends h2d.Scene implements Updatable {
         ball.update(dt);
         player.update(dt);
         opponent.update(dt);
+
+        // testing
+        if (Key.isPressed(Key.ESCAPE)) {
+            var newScene = new MenuScene(app);
+            app.setScene(newScene.scene);
+        }
     }
 }
