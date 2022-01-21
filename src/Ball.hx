@@ -4,7 +4,7 @@ import h2d.Object;
 import h2d.Bitmap;
 
 class Ball extends Bitmap {
-    var velocity = new Vector();
+    public var velocity = new Vector();
     var speed: Float = 3;
     var hasShot = false;
 

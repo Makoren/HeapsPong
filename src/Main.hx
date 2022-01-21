@@ -11,10 +11,10 @@ class Main extends hxd.App {
         ball.setPosition(Window.getInstance().width / 2, Window.getInstance().height / 2);
 
         player = new Paddle(s2d, true);
-        player.setPosition(100, Window.getInstance().height / 2);
+        player.setPosition(200, Window.getInstance().height / 2);
 
         opponent = new Paddle(s2d);
-        opponent.setPosition(Window.getInstance().width - 100, Window.getInstance().height / 2);
+        opponent.setPosition(Window.getInstance().width - 200, Window.getInstance().height / 2);
     }
 
     override function update(dt: Float) {
@@ -25,6 +25,10 @@ class Main extends hxd.App {
             if (Key.isPressed(i)) {
                 ball.shoot();
             }
+        }
+
+        if (ball.getBounds().intersects(player.getBounds()) || ball.getBounds().intersects(opponent.getBounds())) {
+            ball.velocity.x *= -1;
         }
 
         ball.update(dt);

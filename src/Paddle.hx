@@ -6,7 +6,7 @@ import h2d.Bitmap;
 
 class Paddle extends Bitmap {
     var isPlayer: Bool = false;
-    var speed: Float = 1;
+    var speed: Float = 3;
 
     public function new(?parent: Object, isPlayer: Bool = false) {
         super(Tile.fromColor(0xFFFFFF, 16, 128), parent);
