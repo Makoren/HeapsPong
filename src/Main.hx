@@ -31,6 +31,10 @@ class Main extends hxd.App {
             ball.velocity.x *= -1;
         }
 
+        if (ball.getBounds().y < 0 || ball.getBounds().y + ball.getBounds().height > Window.getInstance().height) {
+            ball.velocity.y *= -1;
+        }
+
         ball.update(dt);
         player.update(dt);
         opponent.update(dt);
