@@ -10,7 +10,7 @@ class Main extends hxd.App {
         ball = new Ball(s2d);
         ball.setPosition(Window.getInstance().width / 2, Window.getInstance().height / 2);
 
-        player = new Paddle(s2d);
+        player = new Paddle(s2d, true);
         player.setPosition(100, Window.getInstance().height / 2);
 
         opponent = new Paddle(s2d);
