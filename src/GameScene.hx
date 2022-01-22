@@ -16,6 +16,7 @@ class GameScene extends Scene {
         hxd.Res.impactMining_003,
         hxd.Res.impactMining_004
     ];
+    var paddleSoundLastPlay: Float = 0;
     
     // this sort of thing can be prevented with an array of entities on the scene
     public var gameOverText: Null<GameOverText> = null;
@@ -51,7 +52,7 @@ class GameScene extends Scene {
             var dir = ballPos.sub(paddlePos).normalized();
             ball.direction = dir;
             createParticles();
-            Random.fromArray(paddleSounds).play();
+            paddleSound();
         }
 
         if (ball.getBounds().intersects(opponent.getBounds())) {
@@ -60,7 +61,7 @@ class GameScene extends Scene {
             var dir = ballPos.sub(paddlePos).normalized();
             ball.direction = dir;
             createParticles();
-            Random.fromArray(paddleSounds).play();
+            paddleSound();
         }
 
         // bounce off top and bottom
@@ -100,5 +101,11 @@ class GameScene extends Scene {
         particleSystem.onEnd = function() {
             particleSystem.removeGroup(pGroup);
         }
+    }
+
+    function paddleSound() {
+        if (haxe.Timer.stamp() - paddleSoundLastPlay < 0.1) return;
+        paddleSoundLastPlay = haxe.Timer.stamp();
+        Random.fromArray(paddleSounds).play();
     }
 }
