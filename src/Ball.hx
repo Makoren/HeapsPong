@@ -68,8 +68,7 @@ class Ball extends Bitmap {
 
     public function shoot() {
         hasShot ? return : hasShot = true;
-        direction.x = Random.float(-1, 1);
-        direction.y = Random.float(-1, 1);
-        direction = direction.normalized();
+        var num = Random.float(-1, 1);
+        num > 0 ? direction.x = 1 : direction.x = -1;
     }
 }
