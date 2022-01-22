@@ -2,7 +2,6 @@ package scenes;
 
 import hxd.Event;
 import hxd.Window;
-
 import entities.*;
 
 class MenuScene extends Scene {
@@ -27,9 +26,5 @@ class MenuScene extends Scene {
             setScene(new GameScene(app));
         });
         playButton.setPosition(Window.getInstance().width / 2, Window.getInstance().height - 100);
-    }
-
-    override function update(dt:Float) {
-        
     }
 }

@@ -2,7 +2,6 @@ package entities;
 
 import hxd.Window;
 import h2d.Object;
-
 import scenes.*;
 
 class Score extends h2d.Text {

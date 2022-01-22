@@ -1,5 +1,7 @@
 import scenes.*;
 
+// Files are embedded in the JS output. You only need the index.html and pong.js files to run the game.
+
 class Main extends hxd.App {
     public var currentScene: Scene;
 

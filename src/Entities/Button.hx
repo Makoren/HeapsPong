@@ -2,7 +2,6 @@ package entities;
 
 import hxd.Event;
 import h2d.Interactive;
-import h2d.Tile;
 import h2d.Object;
 import h2d.Bitmap;
 
