@@ -1,5 +1,4 @@
-import scenes.Scene;
-import scenes.GameScene;
+import scenes.*;
 
 class Main extends hxd.App {
     public var currentScene: Scene;
@@ -7,7 +6,7 @@ class Main extends hxd.App {
     override function init() {
         hxd.Res.initEmbed();
 
-        currentScene = new GameScene(this);
+        currentScene = new MenuScene(this);
         currentScene.setScene(currentScene);
     }
 

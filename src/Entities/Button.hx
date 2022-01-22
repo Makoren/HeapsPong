@@ -10,12 +10,14 @@ class Button extends Bitmap {
     var interactive: Interactive;
 
     public function new(?parent: Object, onClick: (event: Event) -> Void) {
-        super(Tile.fromColor(0xFFFFFF, 200, 100), parent);
+        super(hxd.Res.playButton.toTile(), parent);
         tile.dx = -tile.width / 2;
         tile.dy = -tile.height / 2;
 
         interactive = new Interactive(tile.width, tile.height, this);
-        interactive.setPosition(-100, -50);
+        interactive.setPosition(-tile.width / 2, -tile.height / 2);
         interactive.onRelease = onClick;
+
+        scale(2);
     }
 }
