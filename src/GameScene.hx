@@ -7,9 +7,11 @@ class GameScene extends Scene {
     var player: Paddle;
     var opponent: Paddle;
     var score: Score;
+    
+    // this sort of thing can be prevented with an array of entities on the scene
+    public var gameOverText: Null<GameOverText> = null;
 
     public override function new(app: Main) {
-        trace("New game scene");
         super(app);
         ball = new Ball(scene);
 
@@ -19,7 +21,7 @@ class GameScene extends Scene {
         opponent = new Paddle(scene);
         opponent.setPosition(Window.getInstance().width - 100, Window.getInstance().height / 2);
 
-        score = new Score(scene);
+        score = new Score(scene, this, app);
         score.setPosition(Window.getInstance().width / 2, 40);
     }
 
@@ -56,6 +58,7 @@ class GameScene extends Scene {
         ball.update(dt);
         player.update(dt);
         opponent.update(dt);
+        if (gameOverText != null) gameOverText.update(dt);
 
         // testing
         if (Key.isPressed(Key.ESCAPE)) {

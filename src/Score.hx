@@ -1,3 +1,4 @@
+import hxd.Window;
 import h2d.Object;
 
 class Score extends h2d.Text {
@@ -6,13 +7,25 @@ class Score extends h2d.Text {
     var opponentScore = 0;
 
     public static var inst: Score = null;
+    override function onRemove() {
+        super.onRemove();
+        inst = null;
+    }
 
-    public function new(?parent: Object) {
+    // prop drilling 🤢
+    // need some sort of pattern to avoid this unecessary passing of both the scene and the app
+    var scene: Scene;
+    var app: Main;
+
+    public function new(?parent: Object, scene: Scene, app: Main) {
         if (inst == null) {
             inst = this;
         } else {
             remove();
         }
+
+        this.scene = scene;
+        this.app = app;
 
         super(hxd.Res.pongFont.toFont(), parent);
         textAlign = Center;
@@ -27,10 +40,22 @@ class Score extends h2d.Text {
     public function incrementPlayerScore() {
         playerScore += 1;
         updateText();
+
+        if (playerScore >= 10) {
+            var gameScene = cast(scene, GameScene);
+            gameScene.gameOverText = new GameOverText("You Win!", getScene(), scene, app);
+            gameScene.gameOverText.setPosition(Window.getInstance().width / 2, Window.getInstance().height - 200);
+        }
     }
 
     public function incrementOpponentScore() {
         opponentScore += 1;
         updateText();
+
+        if (opponentScore >= 10) {
+            var gameScene = cast(scene, GameScene);
+            gameScene.gameOverText = new GameOverText("You Lose...", getScene(), scene, app);
+            gameScene.gameOverText.setPosition(Window.getInstance().width / 2, Window.getInstance().height - 200);
+        }
     }
 }

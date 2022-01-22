@@ -18,7 +18,6 @@ class Paddle extends Bitmap {
         if (isPlayer) {
             y = Window.getInstance().mouseY;
         } else {
-            trace("testing");
             moveToBall();
         }
     }

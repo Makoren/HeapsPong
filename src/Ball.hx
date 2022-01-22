@@ -10,8 +10,8 @@ class Ball extends Bitmap {
     public var speed: Float = 5;
     var hasShot = false;
 
+    // this idea of static instances could be really weird if you forget to clean up
     public static var inst: Ball = null;
-
     override function onRemove() {
         super.onRemove();
         inst = null;
