@@ -8,6 +8,14 @@ class GameScene extends Scene {
     var player: Paddle;
     var opponent: Paddle;
     var score: Score;
+
+    var paddleSounds = [
+        hxd.Res.impactMining_000,
+        hxd.Res.impactMining_001,
+        hxd.Res.impactMining_002,
+        hxd.Res.impactMining_003,
+        hxd.Res.impactMining_004
+    ];
     
     // this sort of thing can be prevented with an array of entities on the scene
     public var gameOverText: Null<GameOverText> = null;
@@ -43,6 +51,7 @@ class GameScene extends Scene {
             var dir = ballPos.sub(paddlePos).normalized();
             ball.velocity = dir.multiply(ball.speed);
             createParticles();
+            Random.fromArray(paddleSounds).play();
         }
 
         if (ball.getBounds().intersects(opponent.getBounds())) {
@@ -51,6 +60,7 @@ class GameScene extends Scene {
             var dir = ballPos.sub(paddlePos).normalized();
             ball.velocity = dir.multiply(ball.speed);
             createParticles();
+            Random.fromArray(paddleSounds).play();
         }
 
         // bounce off top and bottom

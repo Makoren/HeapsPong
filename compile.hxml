@@ -1,6 +1,8 @@
 -cp src
 -lib heaps
 -lib random
--lib hlsdl
--hl build/pong.hl
+#-lib hlsdl
+#-hl build/pong.hl
+-js build/pong.js
 -main Main
+-D windowSize=640x480

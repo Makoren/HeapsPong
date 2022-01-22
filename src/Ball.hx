@@ -41,9 +41,11 @@ class Ball extends Bitmap {
 
         if (x > Window.getInstance().width) {
             Score.inst.incrementPlayerScore();
+            hxd.Res.error_006.play();
             reset();
         } else if (x < 0) {
             Score.inst.incrementOpponentScore();
+            hxd.Res.error_006.play();
             reset();
         }
     }
