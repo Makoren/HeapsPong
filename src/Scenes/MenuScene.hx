@@ -1,5 +1,9 @@
+package scenes;
+
 import hxd.Event;
 import hxd.Window;
+
+import entities.*;
 
 class MenuScene extends Scene {
     var playButton: Button;

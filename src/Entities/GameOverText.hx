@@ -1,4 +1,8 @@
+package entities;
+
 import h2d.Object;
+
+import scenes.*;
 
 class GameOverText extends h2d.Text {
     var timer: Float = 2;

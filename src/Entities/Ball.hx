@@ -1,3 +1,5 @@
+package entities;
+
 import hxd.Window;
 import h3d.Vector;
 import h2d.Tile;

@@ -1,5 +1,9 @@
+package entities;
+
 import hxd.Window;
 import h2d.Object;
+
+import scenes.*;
 
 class Score extends h2d.Text {
     // adding a setter here removes the need for the methods below, updating text can be done in the setter

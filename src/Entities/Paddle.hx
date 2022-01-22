@@ -1,3 +1,5 @@
+package entities;
+
 import hxd.Window;
 import h2d.Tile;
 import h2d.Object;

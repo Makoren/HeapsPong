@@ -1,7 +1,11 @@
+package scenes;
+
 import h2d.Particles;
 import hxd.Window;
 import h3d.Vector;
 import hxd.Key;
+
+import entities.*;
 
 class GameScene extends Scene {
     var ball:Ball;
