@@ -41,7 +41,7 @@ class Score extends h2d.Text {
         playerScore += 1;
         updateText();
 
-        if (playerScore >= 10) {
+        if (playerScore >= 5) {
             var gameScene = cast(scene, GameScene);
             gameScene.gameOverText = new GameOverText("You Win!", getScene(), scene, app);
             gameScene.gameOverText.setPosition(Window.getInstance().width / 2, Window.getInstance().height - 200);
@@ -52,7 +52,7 @@ class Score extends h2d.Text {
         opponentScore += 1;
         updateText();
 
-        if (opponentScore >= 10) {
+        if (opponentScore >= 5) {
             var gameScene = cast(scene, GameScene);
             gameScene.gameOverText = new GameOverText("You Lose...", getScene(), scene, app);
             gameScene.gameOverText.setPosition(Window.getInstance().width / 2, Window.getInstance().height - 200);

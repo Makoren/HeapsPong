@@ -6,9 +6,13 @@ import h2d.Bitmap;
 
 class Ball extends Bitmap {
     // these should be getters
-    public var velocity = new Vector();
-    public var speed: Float = 5;
+    public var direction = new Vector();
+    public var speed: Float;
+    var startSpeed = 5;
     var hasShot = false;
+
+    var speedTimer = 3;
+    var currentSpeedTimer: Float;
 
     // this idea of static instances could be really weird if you forget to clean up
     public static var inst: Ball = null;
@@ -28,16 +32,28 @@ class Ball extends Bitmap {
         tile.dx = -tile.width / 2;
         tile.dy = -tile.height / 2;
         reset();
+
+        currentSpeedTimer = speedTimer;
+        speed = startSpeed;
     }
 
     function reset() {
         setPosition(Window.getInstance().width / 2, Window.getInstance().height / 2);
-        velocity = new Vector();
+        direction = new Vector();
         hasShot = false;
+        speed = startSpeed;
     }
 
     public function update(dt: Float) {
-        setPosition(x + velocity.x, y + velocity.y);
+        setPosition(x + direction.x * speed, y + direction.y * speed);
+
+        if (hasShot) {
+            currentSpeedTimer -= dt;
+            if (currentSpeedTimer <= 0) {
+                speed += 1;
+                currentSpeedTimer = speedTimer;
+            }
+        }
 
         if (x > Window.getInstance().width) {
             Score.inst.incrementPlayerScore();
@@ -52,8 +68,8 @@ class Ball extends Bitmap {
 
     public function shoot() {
         hasShot ? return : hasShot = true;
-        velocity.x = Random.float(-1, 1);
-        velocity.y = Random.float(-1, 1);
-        velocity = velocity.normalized().multiply(speed);
+        direction.x = Random.float(-1, 1);
+        direction.y = Random.float(-1, 1);
+        direction = direction.normalized();
     }
 }

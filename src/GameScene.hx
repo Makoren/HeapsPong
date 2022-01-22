@@ -49,7 +49,7 @@ class GameScene extends Scene {
             var ballPos = new Vector(ball.x, ball.y);
             var paddlePos = new Vector(player.x, player.y);
             var dir = ballPos.sub(paddlePos).normalized();
-            ball.velocity = dir.multiply(ball.speed);
+            ball.direction = dir;
             createParticles();
             Random.fromArray(paddleSounds).play();
         }
@@ -58,14 +58,14 @@ class GameScene extends Scene {
             var ballPos = new Vector(ball.x, ball.y);
             var paddlePos = new Vector(opponent.x, opponent.y);
             var dir = ballPos.sub(paddlePos).normalized();
-            ball.velocity = dir.multiply(ball.speed);
+            ball.direction = dir;
             createParticles();
             Random.fromArray(paddleSounds).play();
         }
 
         // bounce off top and bottom
         if (ball.getBounds().y < 0 || ball.getBounds().y + ball.getBounds().height > Window.getInstance().height) {
-            ball.velocity.y *= -1;
+            ball.direction.y *= -1;
         }
 
         ball.update(dt);
