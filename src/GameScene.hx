@@ -64,8 +64,12 @@ class GameScene extends Scene {
         }
 
         // bounce off top and bottom
-        if (ball.getBounds().y < 0 || ball.getBounds().y + ball.getBounds().height > Window.getInstance().height) {
-            ball.direction.y *= -1;
+        if (ball.getBounds().y < 0) {
+            ball.direction.y = Math.abs(ball.direction.y);
+        }
+
+        if (ball.getBounds().y + ball.getBounds().height > Window.getInstance().height) {
+            ball.direction.y = -Math.abs(ball.direction.y);
         }
 
         ball.update(dt);
