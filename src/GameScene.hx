@@ -1,3 +1,4 @@
+import h2d.Particles;
 import hxd.Window;
 import h3d.Vector;
 import hxd.Key;
@@ -41,6 +42,7 @@ class GameScene extends Scene {
             var paddlePos = new Vector(player.x, player.y);
             var dir = ballPos.sub(paddlePos).normalized();
             ball.velocity = dir.multiply(ball.speed);
+            createParticles();
         }
 
         if (ball.getBounds().intersects(opponent.getBounds())) {
@@ -48,6 +50,7 @@ class GameScene extends Scene {
             var paddlePos = new Vector(opponent.x, opponent.y);
             var dir = ballPos.sub(paddlePos).normalized();
             ball.velocity = dir.multiply(ball.speed);
+            createParticles();
         }
 
         // bounce off top and bottom
@@ -63,6 +66,25 @@ class GameScene extends Scene {
         // testing
         if (Key.isPressed(Key.ESCAPE)) {
             setScene(new MenuScene(app));
+        }
+    }
+
+    function createParticles() {
+        var particleSystem = new Particles(scene);
+        var pGroup = new ParticleGroup(particleSystem);
+        pGroup.emitLoop = false;
+        pGroup.life = 0.2;
+        pGroup.fadeIn = 0;
+        pGroup.fadeOut = 1;
+        pGroup.fadePower = 5;
+        pGroup.size = 0.2;
+        pGroup.nparts = 10;
+        pGroup.speed = 100;
+        pGroup.gravity = 5;
+        particleSystem.setPosition(ball.x, ball.y);
+        particleSystem.addGroup(pGroup);
+        particleSystem.onEnd = function() {
+            particleSystem.removeGroup(pGroup);
         }
     }
 }
